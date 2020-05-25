@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  pythlab:
+    image: jupyter:v2
+    restart: always
+    ports:
+          - 2222:1234
+    volumes:
+          - jupyter_storage:/workspace
+
+volumes:
+        jupyter_storage:

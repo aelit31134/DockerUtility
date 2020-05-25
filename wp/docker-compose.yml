@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+        dbos:
+                image: mysql:5.7
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: root1425
+                        MYSQL_USER: aayush
+                        MYSQL_PASSWORD: DBpass13
+                        MYSQL_DATABASE: mydb
+                volumes:
+                        - mysql_storage:/var/lib/mysql
+        wpos:
+                image: wpenhance:v1
+                restart: always
+                environment:
+                        WORDPRESS_DB_HOST: dbos
+                        WORDPRESS_DB_USER: aayush
+                        WORDPRESS_DB_PASSWORD: DBpass13
+                        WORDPRESS_DB_NAME: mydb
+                depends_on:
+                        - dbos
+                ports:
+                        - 1234:80
+                volumes:
+                        - wp_storage:/var/www/html
+
+volumes:
+        mysql_storage:
+        wp_storage:
