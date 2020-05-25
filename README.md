@@ -256,13 +256,13 @@ echo
            echo "Which setup do you wish to remove"
            echo "(j for jupyter/w wordpress)"
            read ch
-           if [ ch=="j" ]
+           if [ $ch == "j" ]
 	   then
  		cd /root/jupy
                 docker-compose down
            else
 		cd /root/wp
-		docke-compose down 
+		docker-compose down 
 	   fi
            ;;
 	
